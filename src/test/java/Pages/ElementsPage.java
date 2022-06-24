@@ -101,10 +101,11 @@ public class ElementsPage {
         return element;
     }
 
+
     public WebElement getBrokenLinksImages() {
         WebElement element = null;
         for(int i=0;i< getListElements().size();i++) {
-            if(getListElements().get(i).getText().equals("Broken Links-Images")) {
+            if(getListElements().get(i).getText().equals("Broken Links " +  "-" +" Images"))  {
                 element=getListElements().get(i);
                 break;
             }

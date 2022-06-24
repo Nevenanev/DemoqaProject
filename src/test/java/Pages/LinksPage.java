@@ -21,15 +21,15 @@ public class LinksPage {
     WebElement forbidden;
     WebElement notFound;
     WebElement responseMessage;
-    List<WebElement> allURLS;
+    //List<WebElement> allURLS;
     public LinksPage(WebDriver driver, WebDriverWait wdwait) {
         this.driver = driver;
         this.wdwait = wdwait;
     }
 
-    public List<WebElement> getAllURLS() {
+    /*public List<WebElement> getAllURLS() {
         return driver.findElements(By.tagName("a"));
-    }
+    }*/
 
     public WebElement getHomeLink() {
         return driver.findElement(By.id("simpleLink") );
@@ -73,11 +73,10 @@ public class LinksPage {
 
     //--------------------------------------------------------------------------------------
 
-    public void getAllURLs() {
+    /*public void getAllURLs() {
         String url="";
-        Iterator<WebElement> iterator = this.getAllURLS().iterator();
+        Iterator<WebElement> iterator = this.getAllURLS().iterator();}*/
 
-    }
     public void clickOnHome() {
         this.getHomeLink().click();
     }

@@ -15,6 +15,8 @@ import org.testng.annotations.BeforeClass;
 import java.io.IOException;
 import java.time.Duration;
 
+// For writing of this code, we used IntelliJ framework, and we created Maven project.
+// We created BaseTest, Pages and Test packages.In BaseTest we put all what we'll use during our testing.
 public class BaseTest {
     public WebDriver driver;
     public WebDriverWait wdwait;

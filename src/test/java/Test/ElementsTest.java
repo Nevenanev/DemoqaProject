@@ -248,7 +248,7 @@ public void successfulRadioButtonClick() throws InterruptedException {
         buttonsPage.clickOnClickMeButton();
 
         Assert.assertTrue(buttonsPage.getDoubleclickMessage().isDisplayed());
-        //Assert.assertEquals(buttonsPage.getDoubleclickMessage().getText(), "You have done a double click\n" + "\n" );
+       // Assert.assertEquals(buttonsPage.getDoubleclickMessage().getText(), "You have done a double click");
 
         Assert.assertTrue(buttonsPage.getRightclickMessage().isDisplayed());
        //Assert.assertEquals(buttonsPage.getRightclickMessage().getText(), "You have done a right click\n" + "\n" );
@@ -285,7 +285,8 @@ public void successfulRadioButtonClick() throws InterruptedException {
     @Test
     public void openLinksPage() {
         openElementsPage();
-        visibilityWait(elementsPage.getLinks());
+        scrollIntoView(elementsPage.getLinks());
+        //visibilityWait(elementsPage.getLinks());
         elementsPage.clickOnLinks();
         String linksURL = driver.getCurrentUrl();
         Assert.assertEquals(linksURL, "https://demoqa.com/links");
@@ -311,18 +312,48 @@ public void successfulRadioButtonClick() throws InterruptedException {
 
     }
 @Test
-    public void successfulClickOnCreatedLink() {
+    public void successfulClickOnLinkToSendApiCall() throws InterruptedException {
         openLinksPage();
         linksPage.clickOnCreated();
-        Assert.assertEquals(linksPage.getResponseMessage().getText(), "Link has responded with staus 201 and status text Created\n" + "\n");
+        Thread.sleep(1000);
+        Assert.assertTrue(linksPage.getResponseMessage().isDisplayed());
+        Assert.assertEquals(linksPage.getResponseMessage().getText(), "Link has responded with staus 201 and status text Created");
+
+        linksPage.clickOnNoContent();
+        Thread.sleep(1000);
+        Assert.assertTrue(linksPage.getResponseMessage().isDisplayed());
+        Assert.assertEquals(linksPage.getResponseMessage().getText(), "Link has responded with staus 204 and status text No Content");
+
+        linksPage.clickOnMoved();
+        Thread.sleep(1000);
+        Assert.assertTrue(linksPage.getResponseMessage().isDisplayed());
+        Assert.assertEquals(linksPage.getResponseMessage().getText(), "Link has responded with staus 301 and status text Moved Permanently");
+
+        linksPage.clickOnBadRequest();
+        Thread.sleep(1000);
+        Assert.assertTrue(linksPage.getResponseMessage().isDisplayed());
+        Assert.assertEquals(linksPage.getResponseMessage().getText(), "Link has responded with staus 400 and status text Bad Request");
+
+        linksPage.clickOnUnauthorized();
+        Thread.sleep(1000);
+        Assert.assertTrue(linksPage.getResponseMessage().isDisplayed());
+        Assert.assertEquals(linksPage.getResponseMessage().getText(), "Link has responded with staus 401 and status text Unauthorized");
+
+        linksPage.clickOnForbidden();
+        Thread.sleep(1000);
+        Assert.assertTrue(linksPage.getResponseMessage().isDisplayed());
+        Assert.assertEquals(linksPage.getResponseMessage().getText(), "Link has responded with staus 403 and status text Forbidden");
+
+        linksPage.clickOnNotFound();
+        Thread.sleep(1000);
+        Assert.assertTrue(linksPage.getResponseMessage().isDisplayed());
+        Assert.assertEquals(linksPage.getResponseMessage().getText(), "Link has responded with staus 404 and status text Not Found");
 }
 
 @Test
-public void openBrokenLinksPage() throws InterruptedException {
+public void openBrokenLinksPage() {
     openElementsPage();
-    Thread.sleep(2000);
-    // visibilityWait(elementsPage.getBrokenLinksImages());
-    //scrollIntoView(elementsPage.getBrokenLinksImages());
+    scrollIntoView(elementsPage.getBrokenLinksImages());
     elementsPage.clickOnBrokenLinksImages();
     String brokenlinkURL = driver.getCurrentUrl();
     Assert.assertEquals(brokenlinkURL, "https://demoqa.com/broken");
@@ -353,8 +384,8 @@ public void openUploadDownloadPage() {
 
 @Test
 public void successfulImageUpload() throws InterruptedException {
-        File slika = new File("C:\\Users\\Korisnik\\Desktop\\slika1.jpg");
         openUploadDownloadPage();
+       File slika = new File("C:\\Users\\Korisnik\\Desktop\\slika1.jpg");
         uploadDownloadPage.clickOnChooseFileButton();
         uploadDownloadPage.choosePictureToUpload();
         Assert.assertTrue(uploadDownloadPage.getUploadMessage().isDisplayed());
@@ -363,10 +394,8 @@ public void successfulImageUpload() throws InterruptedException {
         Thread.sleep(2000);
         driver.navigate().back();
         uploadDownloadPage.clickDownloadButton();
-
-
-
 }
+
 
 
 
