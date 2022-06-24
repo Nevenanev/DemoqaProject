@@ -55,7 +55,7 @@ public class BaseTest {
         buttonsPage = new ButtonsPage(driver, wdwait);
         linksPage = new LinksPage(driver, wdwait);
         brokenLinkPage = new BrokenLinkPage(driver, wdwait);
-        uploadDownloadPage = new
+        uploadDownloadPage = new UploadDownloadPage(driver, wdwait);
         excelReader = new ExcelReader("C:\\Users\\Korisnik\\Desktop\\PodaciProjekat.xlsx");
         JavascriptExecutor js = (JavascriptExecutor)driver;
         homepageURL = excelReader.getStringData("Login", 1, 4);
